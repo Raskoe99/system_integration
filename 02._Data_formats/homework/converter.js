@@ -1,34 +1,35 @@
 // Parse txt files
 import { open } from 'node:fs/promises';
+let d = {};
 
 //let txtFile = fs.readFileSync('data.txt', 'utf8').toString().split("\r");
 async function myFileReader() {
     const file = await open('data.txt');
-    let i = 0;
+    let columns = [];
+    let i = 1;
 
     for await (const line of file.readLines()) {
-        for (const word of line.split('\n')) {
-            if (i == 0) {
-                
-            }
-        }
-        
+        console.log(line);
     }
 }
 myFileReader();
-/*let columns = []
+/*
+with open('data.txt') as f:
+    lines = f.readlines() # list containing lines of file
+    columns = []
 
-for (let i=0; i<txtFile.length; i++) {
-    if (i >= 1) {
-        for (let j=0; j<txtFile[i].length; j++) {
-            columns.push(txtFile[i].split(","))
-        }
-    } else {
-        for (let j=0; j<txtFile[i].length; j++) {
-            console.log(txtFile[i][j].split(","))
-        }
-    }
-}*/
+    i = 1
+    for line in lines:
+        line = line.strip() # remove leading/trailing white spaces
+        if line:
+            if i == 1:
+                columns = [item.strip() for item in line.split(',')]
+                i = i + 1
+            else:
+                data = [item.strip() for item in line.split(',')]
+                for index, elem in enumerate(data):
+                    d[columns[index]] = data[index]
+*/
 
 
 
