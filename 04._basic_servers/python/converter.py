@@ -1,4 +1,10 @@
-# Parse txt files
+import json
+import yaml
+import xmltodict
+import csv
+
+def __name__():
+    return "converter_py"
 
 def txt_reader(file_name):
     d = {} # dictionary to store file data (each line)
@@ -19,13 +25,14 @@ def txt_reader(file_name):
                         d[columns[index]] = data[index]
     return d
 
-print(txt_reader('data.txt'))
 
 
+def json_reader(file_name):
+    with open(file_name) as f:
+        data = json.load(f)
+    return data
 
 
-# Parse yaml files
-import yaml
 
 def yaml_reader(file_name):
     with open(file_name, "r") as stream:
@@ -34,35 +41,14 @@ def yaml_reader(file_name):
         except yaml.YAMLError as e:
             return e
 
-print(yaml_reader('data.yaml'))
 
-
-
-# Parse json files
-import json
-
-def json_reader(file_name):
-    with open(file_name) as f:
-        data = json.load(f)
-    return data
-
-print(json_reader('data.json'))
-
-
-
-# Parse xml files
-import xmltodict
 
 def xml_reader(file_name):
     with open(file_name) as fd:
         doc = xmltodict.parse(fd.read())
     return doc
 
-print(xml_reader('data.xml'))
 
-
-# Parse csv files
-import csv
 
 def csv_reader(file_name):
     i = 0
@@ -75,8 +61,3 @@ def csv_reader(file_name):
                 lines.append(line)
 
     return lines
-
-
-print(csv_reader('data.csv'))
-
-
