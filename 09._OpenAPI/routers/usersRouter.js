@@ -27,6 +27,21 @@ router.get("/api/users", (req, res) => {
  *     responses:
  *       200:
  *         description: Returns the users that was created
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             type: object
+ *             properties:
+ *              id:
+ *               type: integer
+ *               description: The user's id.
+ *               example: 1
+ *              name:
+ *               type: string
+ *               description: The user's name.
+ *               example: John Doe
  */
 router.post("/api/users", (req, res) => {
     const user = req.body;
