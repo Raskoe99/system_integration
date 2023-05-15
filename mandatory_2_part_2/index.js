@@ -25,12 +25,15 @@ table.find('tr').each((index, element) => {
     const db = new sqlite3.Database('currency.db', sqlite3.OPEN_READWRITE, (err) => { 
         if(err) return console.log(err.message);
         //db.run(`CREATE TABLE IF NOT EXISTS currencyDB (id integer primary key, currency, rate, value)`);
+
+        //-------- Insert data into table from options --------//
+        db.run("DELETE FROM currencyDB", (err) => { if(err) return console.log(err.message);});
         
-        // sql = `INSERT INTO currencyDB (currency, rate, value) VALUES (?, ?, ?)`;
+        sql = `INSERT INTO currencyDB (currency, rate, value) VALUES (?, ?, ?)`;
 
         // //-------- Insert data into table from options --------//
-        // db.run(sql, [currency, rate, value],
-        // (err) => { if(err) return console.log(err.message);});
+        db.run(sql, [currency, rate, value],
+        (err) => { if(err) return console.log(err.message);});
 
         //--------- Query the DB --------//
         sqlSelect = `SELECT * FROM currencyDB`;
