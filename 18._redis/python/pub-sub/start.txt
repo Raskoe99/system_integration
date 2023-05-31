@@ -1,0 +1,1 @@
+First run subscriber with uvicorn subscriber:app --reload, then publisher with python
