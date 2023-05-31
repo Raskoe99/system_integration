@@ -11,7 +11,7 @@ function txtReader(filename) {
     }
     myFileReader();
 }
-txtReader('data.txt');
+console.log(txtReader('data.txt'));
 
 
 // Parse yaml files
@@ -26,7 +26,7 @@ function yamlReader(filename) {
     }
 }
 
-yamlReader('data.yaml');
+console.log(yamlReader('data.yaml'));
 
 
 // Parse json files
@@ -36,7 +36,7 @@ function jsonReader(filename) {
     return JSON.parse(fs.readFileSync(filename, 'utf8'));
 }
 
-jsonReader('data.json');
+console.log(jsonReader('data.json'));
 
 
 // Parse xml files
@@ -51,7 +51,7 @@ function xmlReader(filename) {
     });
 }
 
-xmlReader('data.xml');
+console.log(xmlReader('data.xml'));
 
 
 // Parse csv files
@@ -62,6 +62,6 @@ function csvReader(filename) {
         return jsonObj[0];
     });
 }
-csvReader('data.csv');
+console.log(csvReader('data.csv'));
 
 export default { txtReader, yamlReader, jsonReader, xmlReader, csvReader };
